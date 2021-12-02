@@ -15,6 +15,7 @@ namespace ALMITWV
         public string Ram { get; }
         public decimal Rak { get; }
         public decimal GBRak { get; }
+        public static int GetWindowsScaling { get; }
         public string RegisteredOwner;
         public string RegisteredOrganization;
         public string clipboard;
@@ -75,8 +76,8 @@ namespace ALMITWV
                 GBRak = (decimal.Parse(Ram) / (1024 * 1024));
                 GBRak = decimal.Round(GBRak, 2, MidpointRounding.AwayFromZero);
             }
-            string screenWidth = Screen.PrimaryScreen.Bounds.Width.ToString();
-            string screenHeight = Screen.PrimaryScreen.Bounds.Height.ToString();
+            string screenWidth = Screen.PrimaryScreen.Bounds.Width.ToString() * GetWindowsScaling;
+            string screenHeight = Screen.PrimaryScreen.Bounds.Height.ToString() * GetWindowsScaling;
             // now to text substitution
             Label.Text = null;
             productname.Text = ProductName.Replace(EditionId, null);
